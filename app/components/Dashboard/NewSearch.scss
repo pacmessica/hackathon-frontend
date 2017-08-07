@@ -24,6 +24,9 @@
     button:hover {
         background: #bbc3c5;
     }
+    button:focus {
+        outline: none;
+    }
 }
 
 .container {
