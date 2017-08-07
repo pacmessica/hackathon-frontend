@@ -1,0 +1,17 @@
+html,
+body {
+  // font-size: $root-font-size;
+  // font-family: $font-stack;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+    background: #f6f8f9;
+    color: #394146;
+    min-height: 100vh;
+    height: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
