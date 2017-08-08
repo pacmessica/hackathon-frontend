@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './NewSearch.scss';
 
-export const NewSearch = ({value, onUpdate}) => {
+export const NewSearch = ({value, onUpdate, onSubmit}) => {
     return (
         <div className={styles.container}>
             <h1>Search Item</h1>
@@ -14,7 +14,7 @@ export const NewSearch = ({value, onUpdate}) => {
                     onChange={(event) => onUpdate(event.target.value)}
                   />
                 </div>
-                <button>Search</button>
+                <button onClick={onSubmit}>Search</button>
             </div>
         </div>
     );
@@ -23,4 +23,5 @@ export const NewSearch = ({value, onUpdate}) => {
 NewSearch.propTypes = {
     value: PropTypes.string,
     onUpdate: PropTypes.func,
+    onSubmit: PropTypes.func,
 };
