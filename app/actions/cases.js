@@ -1,6 +1,8 @@
 import {request} from 'app/common/api';
 
-function apiCall(params) {
+function apiCall(query) {
+    const params = {query};
+
     return request.get('api/search', {params})
         .then((response) => { // eslint-disable-line consistent-return
             if (response.ok) {
@@ -15,7 +17,7 @@ function apiCall(params) {
 }
 
 export function addCase(dispatch, query) : Event {
-    return apiCall({ query })
+    return apiCall(query)
         .then((caseDetail) => {
             dispatch({ type: 'ADD_CASE', payload: caseDetail });
             return caseDetail;

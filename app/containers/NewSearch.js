@@ -47,7 +47,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addCase: query => dispatch(addCase(query))
+        addCase: query => addCase(dispatch, query)
     };
 };
 
