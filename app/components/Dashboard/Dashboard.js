@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './Dashboard.scss';
 import {Link} from 'react-router-dom';
 
-export const Dashboard = ({cases}) => {
+export const Dashboard = ({cases, onSelect}) => {
     return (
         <div>
             <h1>Searches</h1>
@@ -11,10 +11,10 @@ export const Dashboard = ({cases}) => {
                  +
                 </Link>
             </div>
-            {Object.values(cases).map(({query, posts}) =>
-                <div className={styles.item} key={query}>
-                    <div className={styles.tag}>{query}</div>
-                    <div className={styles.reference}>{posts.length}</div>
+            {Object.keys(cases).map((k) =>
+                <div className={styles.item} key={k} onClick={() => onSelect(k)}>
+                    <div className={styles.tag}>{cases[k].query}</div>
+                    <div className={styles.reference}>{cases[k].posts.length}</div>
                 </div>
             )}
         </div>
@@ -23,4 +23,5 @@ export const Dashboard = ({cases}) => {
 
 Dashboard.propTypes = {
     cases: PropTypes.object,
+    onSelect: PropTypes.func,
 };

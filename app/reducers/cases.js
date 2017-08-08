@@ -1,8 +1,4 @@
-const initialState = {
-
-};
-
-export const cases = (state = initialState, action) => {
+export const cases = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_CASE':
             return {
