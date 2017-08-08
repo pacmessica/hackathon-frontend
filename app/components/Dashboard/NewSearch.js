@@ -5,7 +5,7 @@ import styles from './NewSearch.scss';
 export const NewSearch = ({value, onUpdate, onSubmit}) => {
     return (
         <div className={styles.container}>
-            <h1>Search Item</h1>
+            <h1>Search Posts</h1>
             <div className={styles.box}>
                 <div className={styles.field}>
                   <input

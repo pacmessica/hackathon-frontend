@@ -1,12 +1,15 @@
 const initialState = {
-    posts: [],
+
 };
 
 export const cases = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_CASE':
             return {
-                posts: action.payload,
+                ...state,
+                [action.id]: {
+                    posts: action.payload,
+                }
             };
 
         default:

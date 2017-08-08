@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { filterTable } from '../actions';
-import { Case as CaseComponent } from '../components/Case/Case';
+import { addCase } from 'app/actions/cases';
+import { Case as CaseComponent } from 'app/components/Case/Case';
 
-const mapStateToProps = (state) => {
-    console.log('state', state);
+const mapStateToProps = (state, ownProps) => {
+    const {id} = ownProps.match.params;
     return {
-        posts: state.cases.posts
+        posts: state.cases[id].posts
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFilter: filterText => dispatch(filterTable(filterText))
+        addCase: query => addCase(dispatch, query)
     };
 };
 

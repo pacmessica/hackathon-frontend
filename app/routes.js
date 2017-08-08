@@ -8,6 +8,6 @@ export default (
 	<Switch>
 		<Route exact path="/" component={Dashboard} />
 		<Route path="/new" component={NewSearch} />
-		<Route path="/case" component={Case} />
+		<Route path="/case/:id" component={Case} />
 	</Switch>
 );

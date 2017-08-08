@@ -15,7 +15,8 @@ function apiCall(query) {
 export function addCase(dispatch, query) : Event {
     return apiCall(query)
         .then((posts) => {
-            dispatch({ type: 'ADD_CASE', payload: posts, id: query });
+            const id = query.replace(/\s/g, '');
+            dispatch({ type: 'ADD_CASE', payload: posts, id });
             return posts;
         }).catch((err) => {
             console.log('error', err);

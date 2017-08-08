@@ -18,8 +18,10 @@ class NewSearchContainer extends React.Component {
     }
 
     onSubmit = () => {
-        this.props.addCase(this.state.query).then(() => {
-            this.props.pushHistory('/case');
+        const {query} = this.state;
+        this.props.addCase(query).then(() => {
+            const id = query.replace(/\s/g, '');
+            this.props.pushHistory(`/case/${id}`);
         });
     }
 
