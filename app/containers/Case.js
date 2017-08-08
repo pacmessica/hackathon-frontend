@@ -3,8 +3,9 @@ import { filterTable } from '../actions';
 import { Case as CaseComponent } from '../components/Case/Case';
 
 const mapStateToProps = (state) => {
+    console.log('state', state);
     return {
-        filter: state.filter
+        posts: state.cases.posts
     };
 };
 

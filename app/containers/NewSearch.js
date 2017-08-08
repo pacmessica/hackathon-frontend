@@ -8,7 +8,7 @@ class NewSearchContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: null,
+            value: '',
         };
     }
 
