@@ -1,5 +1,4 @@
 import React from 'react';
-// import React, { PropTypes } from 'react';
 import {FIELDS} from 'app/common/constants';
 import { DropDown } from 'app/components/Menus/Dropdown';
 import styles from './Filters.scss';
