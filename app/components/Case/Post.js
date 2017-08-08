@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Post.scss';
 
-export const Post = ({ title, photos, description, location, created }) => {
+export const Post = ({ title, photos, description, city, created }) => {
     const src = photos[0];
     return (
         <li className={styles.item}>
@@ -12,7 +12,7 @@ export const Post = ({ title, photos, description, location, created }) => {
                 <div className={styles.details}>
                     <div>€ 475,00</div>
                     <div>{created}</div>
-                    <div>{location}</div>
+                    <div>{city}</div>
                 </div>
             </div>
             <div className={styles.photo} style={{backgroundImage: `url(${src})`}} />
@@ -23,7 +23,7 @@ export const Post = ({ title, photos, description, location, created }) => {
 Post.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
-    location: PropTypes.string,
+    city: PropTypes.string,
     created: PropTypes.string,
     photos: PropTypes.array,
 };
