@@ -1,30 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { filterTable } from '../actions';
-import { NewSearch as NewSearchComponent } from '../components/Dashboard/NewSearch';
+import { addCase } from 'app/actions/cases';
+import { NewSearch as NewSearchComponent } from 'app/components/Dashboard/NewSearch';
 
 
 class NewSearchContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: '',
+            query: '',
         };
     }
 
-    onUpdate = (value) => {
-        this.setState({value});
+    onUpdate = (query) => {
+        this.setState({query});
     }
 
     onSubmit = () => {
-        this.props.pushHistory('/case');
+        this.props.addCase(this.state.query).then(() => {
+            this.props.pushHistory('/case');
+        });
     }
 
     render() {
         return (
             <NewSearchComponent
-                value={this.state.value}
+                value={this.state.query}
                 onUpdate={this.onUpdate}
                 onSubmit={this.onSubmit}
             />
@@ -34,18 +36,18 @@ class NewSearchContainer extends React.Component {
 
 NewSearchContainer.propTypes = {
     pushHistory: PropTypes.func,
+    addCase: PropTypes.func,
 };
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        filter: state.filter,
         pushHistory: ownProps.history.push,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFilter: filterText => dispatch(filterTable(filterText))
+        addCase: query => dispatch(addCase(query))
     };
 };
 

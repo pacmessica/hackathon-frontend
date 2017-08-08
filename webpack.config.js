@@ -18,6 +18,11 @@ module.exports = {
         filename: '[name].js',
         publicPath: '/'
     },
+    resolve: {
+        alias: {
+            app: path.resolve(__dirname, 'app'),
+        },
+    },
     plugins: [
         new HtmlWebpackPlugin({
           template: 'app/index.tpl.html',
