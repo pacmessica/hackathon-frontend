@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Case.scss';
+import styles from './Post.scss';
 
-export const Post = ({ title, photos }) => {
+export const Post = ({ title, photos, description, location, created }) => {
     const src = photos[0];
     return (
         <li className={styles.item}>
-            <div className={styles.textbox}>{title}</div>
+            <div className={styles.textbox}>
+                <div className={styles.title}>{title}</div>
+                <div className={styles.description}>{description}</div>
+                <div className={styles.details}>
+                    <div>€ 475,00</div>
+                    <div>{created}</div>
+                    <div>{location}</div>
+                </div>
+            </div>
             <div className={styles.photo} style={{backgroundImage: `url(${src})`}} />
         </li>
     );
@@ -14,5 +22,8 @@ export const Post = ({ title, photos }) => {
 
 Post.propTypes = {
     title: PropTypes.string,
+    description: PropTypes.string,
+    location: PropTypes.string,
+    created: PropTypes.string,
     photos: PropTypes.array,
 };

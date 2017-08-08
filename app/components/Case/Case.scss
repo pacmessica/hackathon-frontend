@@ -1,19 +1,5 @@
-.item {
-    display: flex;
-    padding: 10px 20px;
-    background-color: #ededed;
-    border-top: 1px solid #f6f8f9
-}
-
-.photo {
-    flex: 1;
-    min-width: 100px;
-    height: 100px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-
-.textbox {
-    flex: 5;
+.container {
+    ul {
+        padding: 0;
+    }
 }
