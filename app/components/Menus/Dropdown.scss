@@ -1,0 +1,33 @@
+.dropDown {
+  height: 40px;
+  margin: 2px 6px 8px auto;
+}
+
+.dropDown select {
+  background-color: white;
+  border: 1px solid #909090;
+  font-size: 13px;
+  height: 43px;
+  width: 306px;
+  outline: 0 none;
+ }
+
+.field label {
+  color: #909090;
+  float: left;
+  text-align: right;
+  padding-right: 10px;
+  margin-top: 10px;
+}
+
+.field input {
+  border: 1px solid #909090;
+  border-radius: 4px;
+  height: 35px;
+  margin: 2px 6px 8px auto;
+  outline: 0 none;
+  padding: 3px 3px 3px 5px;
+  width: 300px;
+  font-size: 14px;
+  line-height:14px;
+}
