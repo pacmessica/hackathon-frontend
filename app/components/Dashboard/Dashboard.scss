@@ -1,10 +1,16 @@
-.add {
-    color: red;
+.item {
     height: 174px;
     width: 174px;
     border-radius: 4px;
     text-align: center;
     background: white;
+    display: inline-block;
+    margin: 10px;
+}
+
+.add {
+    composes: item;
+    background: #f6f8f9;
     a {
         text-decoration: none;
         line-height: 174px;
@@ -12,4 +18,20 @@
         color: #394146;
         margin: 0 auto;
     }
+}
+
+.tag {
+    display: block;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 44px 10px 0;
+}
+
+.reference {
+    display: block;
+    font-size: 2.6em;
+    line-height: 1;
+    padding-top: 20px;
 }

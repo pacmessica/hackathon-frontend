@@ -5,7 +5,7 @@ import { Dashboard as DashboardComponent } from '../components/Dashboard/Dashboa
 
 const mapStateToProps = (state) => {
     return {
-        filter: state.filter
+        cases: state.cases
     };
 };
 

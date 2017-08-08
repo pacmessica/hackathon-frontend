@@ -8,7 +8,8 @@ export const cases = (state = initialState, action) => {
             return {
                 ...state,
                 [action.id]: {
-                    posts: action.payload,
+                    query: action.payload.query,
+                    posts: action.payload.posts,
                 }
             };
 
