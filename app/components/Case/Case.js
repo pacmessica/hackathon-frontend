@@ -8,10 +8,12 @@ export const Case = ({ posts }) => {
     return (
         <div className={styles.container}>
             <h1>Search Results</h1>
-            <Filters />
-            <ul>
-                {posts.map((post) => <Post key={post.id} {...post} /> )}
-            </ul>
+            <div className={styles.content}>
+                <ul>
+                    {posts.map((post) => <Post key={post.id} {...post} /> )}
+                </ul>
+                <Filters />
+            </div>
         </div>
     );
 };

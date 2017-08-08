@@ -2,7 +2,7 @@ import React from 'react';
 // import React, { PropTypes } from 'react';
 import {FIELDS} from 'app/common/constants';
 import { DropDown } from 'app/components/Menus/Dropdown';
-// import styles from './Filters.scss';
+import styles from './Filters.scss';
 
 export class Filters extends React.Component {
     constructor() {
@@ -23,7 +23,7 @@ export class Filters extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.container}>
               <h2>Filters</h2>
               {this.state.filters.map((filter) =>
                   <div>{filter}</div>
