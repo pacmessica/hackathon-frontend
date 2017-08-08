@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Post.scss';
 import htmlToText from 'app/common/parser';
 
-export const Post = ({ title, photos, description, city, created }) => {
+export const Post = ({ title, photos, description, city, created, price }) => {
     const src = photos[0];
     const descriptionText = htmlToText(description);
     return (
@@ -12,7 +12,7 @@ export const Post = ({ title, photos, description, city, created }) => {
                 <div className={styles.title}>{title}</div>
                 <div className={styles.description}>{descriptionText}</div>
                 <div className={styles.details}>
-                    <div>€ 475,00</div>
+                    <div>€ {price}</div>
                     <div>{created}</div>
                     <div>{city}</div>
                 </div>
@@ -23,9 +23,10 @@ export const Post = ({ title, photos, description, city, created }) => {
 };
 
 Post.propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    city: PropTypes.string,
-    created: PropTypes.string,
-    photos: PropTypes.array,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    created: PropTypes.string.isRequired,
+    photos: PropTypes.array.isRequired,
+    price: PropTypes.number.isRequired,
 };
