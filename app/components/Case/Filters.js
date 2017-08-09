@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Item as FormItem } from 'app/components/Form/Item';
+// import { Item as FormItem } from 'app/components/Form/Item';
 import styles from './Filters.scss';
 
 export class Filters extends React.Component {
@@ -12,8 +12,8 @@ export class Filters extends React.Component {
         };
     }
 
-    onUpdateField = (value, field) => {
-        this.setState({[field.toLowerCase()]: value});
+    onUpdate = (value, field) => {
+        this.setState({[field]: value});
     }
 
     onSearch = () => {
@@ -23,14 +23,40 @@ export class Filters extends React.Component {
 
     render() {
         return (
-            <div className={styles.container}>
-              <h2>Filters</h2>
-
-              <FormItem label="Description" value={this.state.description} onUpdate={this.onUpdateField}/>
-              <FormItem label="City" value={this.state.city} onUpdate={this.onUpdateField}/>
-              <button onClick={this.onSearch}>Apply Filters</button>
+            <div>
+                <table className={styles.filters}>
+                    <tbody>
+                        <tr>
+                            <td className={styles.score}><input type="text" placeholder="Description" value={this.state.descripiton}
+                            onChange={(event) => this.onUpdate(event.target.value, 'description')}/></td>
+                            <td className={styles.score}><input type="text" placeholder="Location" value={this.state.city}
+                            onChange={(event) => this.onUpdate(event.target.value, 'city')}/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button onClick={this.onSearch}>Apply Filters</button>
             </div>
         );
+
+        // return (
+        //     <div className={styles.container}>
+        //       <h2>Filters</h2>
+        //
+        //       <FormItem label="Description" value={this.state.description} onUpdate={this.onUpdateField}/>
+        //       <FormItem label="City" value={this.state.city} onUpdate={this.onUpdateField}/>
+        //       <button onClick={this.onSearch}>Apply Filters</button>
+        //
+        //       <table className={styles.filters}>
+        //           <tbody>
+        //               <tr>
+        //                   <td className={styles.score}><input type="text" placeholder="Description" value={this.state.description} onUpdate={this.onUpdateField} /></td>
+        //                   <td className={styles.score}><input type="text" placeholder="Location" /></td>
+        //               </tr>
+        //           </tbody>
+        //       </table>
+        //       <button onClick={this.onSearch}>Apply Filters</button>
+        //     </div>
+        // );
     }
 }
 

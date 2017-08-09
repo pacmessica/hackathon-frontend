@@ -21,6 +21,18 @@ h1 {
 p {
   line-height: 20px;
 }
+
+button {
+    font-size: 12px;
+    text-align: center;
+    background-color: #20b5e1;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+    width: 145px;
+    border: none;
+    margin-top: 8px
+}
 .header {
   width:50%;
   margin:auto;
@@ -95,15 +107,19 @@ table.advertisement td.title {
   padding-left: 30px;
   text-align: left;
 }
-.advertisement-details {
+.advertisementDetails {
   color: #777;
   margin: 25px;
   padding-left: 25px;
   padding-right: 25px;
   text-align: left;
   font-size: 12px;
+  a {
+      text-decoration: none;
+      color: #394146;
+  }
 }
-.advertisement-details table
+.advertisementDetails table
 {
   table-layout : fixed;
   width: 100%;
@@ -201,11 +217,4 @@ div.breaker {
     composes: box;
     composes: showMore;
     font-size: 16px;
-}
-
-.description {
-    margin: 25px;
-    text-align: left;
-    line-height: 1.5em;
-    font-size: 0.9em;
 }

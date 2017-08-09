@@ -59,7 +59,7 @@ export class Post extends React.Component {
     }
 
     render() {
-        const {title, photos, description, city, price, suspiscious_score, user, matches} = this.props;
+        const {title, photos, description, city, price, suspiscious_score, user, matches, url} = this.props;
         const src = photos[0];
         const descriptionText = htmlToText(description);
         return (
@@ -67,9 +67,9 @@ export class Post extends React.Component {
                 <table className={styles.advertisement}>
                     <tbody>
                         <tr>
-                            <td className={styles.score}><span>{suspiscious_score}%</span></td>
+                            <td className={styles.score}><span>{suspiscious_score * 100}%</span></td>
                             <td className={styles.title}>{title}</td>
-                            <td><img src={src} width="100" /></td>
+                            <td><a href={url}><img src={src} width="100" /></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -88,7 +88,7 @@ export class Post extends React.Component {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>{user.name}</td>
+                                    <td><a href={user.url}>{user.name}</a></td>
                                     <td>&euro; {price}</td>
                                     <td>{city}</td>
                                 </tr>

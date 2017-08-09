@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Case.scss';
 import { Post } from './Post';
-// import { Filters } from './Filters';
+import { Filters } from './Filters';
 
 // <p>Set minimal content{"'"}s suspicious score</p>
 // <div className={styles.score}slider">
@@ -17,14 +17,7 @@ export const Case = ({ caseQuery, posts, filterCase }) => {
             <h1>Suspicious Advertisements</h1>
             <div className={styles.header}>
              <p>Filter on...</p>
-             <table className={styles.filters}>
-                 <tbody>
-                     <tr>
-                         <td className={styles.score}><input type="text" placeholder="Description" /></td>
-                         <td className={styles.score}><input type="text" placeholder="Location" /></td>
-                     </tr>
-                 </tbody>
-             </table>
+             <Filters filterCase={filterCase} caseQuery={caseQuery} />
             </div>
             {posts.map((post) => <Post key={post.id} {...post} onClick={() => console.log('clicked!')}/> )}
          </div>
