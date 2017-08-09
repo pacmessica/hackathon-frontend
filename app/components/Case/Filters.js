@@ -1,37 +1,39 @@
 import React from 'react';
-import {FIELDS} from 'app/common/constants';
-import { DropDown } from 'app/components/Menus/Dropdown';
+import { Item as FormItem } from 'app/components/Form/Item';
 import styles from './Filters.scss';
 
 export class Filters extends React.Component {
     constructor() {
         super();
         this.state = {
-            filters: [],
+            description: '',
+            location: '',
         };
     }
 
-    onChange = (filter) => {
-        const {filters} = this.state;
-        if (!filters.includes(filter)) {
-            this.setState({
-                filters: filters.concat([filter])
-            });
-        }
+    // onChange = (filter) => {
+    //     const {filters} = this.state;
+    //     if (!filters.includes(filter)) {
+    //         this.setState({
+    //             filters: filters.concat([filter])
+    //         });
+    //     }
+    // }
+
+    onUpdateField = (value, field) => {
+        console.log({value, field});
+        this.setState({[field]: value});
+        console.log('this.state', this.state);
     }
 
     render() {
         return (
             <div className={styles.container}>
               <h2>Filters</h2>
-              {this.state.filters.map((filter) =>
-                  <div>{filter}</div>
-              )}
-              <DropDown
-                label="Add New Filter"
-                options={FIELDS}
-                onChange={this.onChange}
-              />
+
+              <FormItem label="Description" value={this.state.description} onUpdate={this.onUpdateField}/>
+              <FormItem label="Location" value={this.state.location} onUpdate={this.onUpdateField}/>
+
             </div>
         );
     }

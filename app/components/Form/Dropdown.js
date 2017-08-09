@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Dropdown.scss';
+import styles from './Form.scss';
 
 export const DropDown = ({ label, options, value, onChange }) => (
   <div className={styles.field}>

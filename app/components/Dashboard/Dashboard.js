@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 export const Dashboard = ({cases, onCreateReport, onSelect}) => {
     return (
         <div>
-            <h1>Searches!!</h1>
+            <h1>Searches</h1>
             <div className={styles.add}>
                 <Link to={'/new'}>
                  +
