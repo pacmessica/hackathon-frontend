@@ -60,7 +60,7 @@
     }
 
     function createSuspectNode(user) {
-        const {id, name} = users[i].user;
+        const {id, name, url} = users[i].user;
         const {advertisements, matches} = users[i];
         var ads = ""
         advertisements.forEach(function({title, price, created, url}) {
@@ -109,7 +109,7 @@
         })
 
         return `<div class="box effect">
-            <h2>${name}</h2>
+            <a href=${url}><h2>${name}</h2></a>
             <p class="score-label">${name}'s suspicious score</p>
             <div id="score-${id}" class="score-percentage">50%</div>
             <canvas id="score-canvas-${id}"></canvas>
