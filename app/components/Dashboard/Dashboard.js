@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Dashboard.scss';
 import {Link} from 'react-router-dom';
 
-export const Dashboard = ({cases, onCreateReport, onSelect}) => {
+export const Dashboard = ({cases, onSelect}) => {
     return (
         <div>
             <h1>Searches</h1>
@@ -18,7 +18,7 @@ export const Dashboard = ({cases, onCreateReport, onSelect}) => {
                     <div className={styles.reference}>{cases[k].posts.length}</div>
                 </div>
             )}
-            <div className={styles.reportLink} onClick={onCreateReport}>Create Suspicious Activity Report</div>
+            <a className={styles.reportLink} href="app/report.html">Create Suspicious Activity Report</a>
         </div>
     );
 };

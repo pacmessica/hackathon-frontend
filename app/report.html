@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MarketSuspects.com - Suspicious Users</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="rangeslider/rangeslider.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="rangeslider/rangeslider.min.js"></script>
+</head>
+<body>
+   <div class="container">
+    <h1>Suspicious users</h1>
+    <div class="header">
+        <p>Set minimal suspicious score</p>
+        <div class="score-slider">
+            <input type="range">
+        </div>
+    </div>
+    <div class="box effect">
+        <h2>John Legend</h2>
+        <p class="score-label">John Legend's suspicious score</p>
+        <div id="score-user1" class="score-percentage">50%</div>
+        <canvas id="score-canvas-user1"></canvas>
+        <h3>What triggered this alert?</h3>
+        <table class="rules">
+            <tbody>
+                <tr>
+                    <td>Multiple advertisements on one day</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>User profile recently created</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>Non-trackable payment</td>
+                    <td>5%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p id="show-more-user1"><a class="show-more" onclick="javascript:showAdvertisement('user1')">...</a></p>
+        <div id="advertisement-user1" class="hidden">
+            <h3>Advertisements by John Legend</h3>
+            <table class="advertisements">
+                <tbody>
+                    <tr>
+                        <td>elektrische fiets KASIHIMA voor heren</td>
+                        <td>&euro; 350</td>
+                        <td>3 weeks ago</td>
+                    </tr>
+                    <tr>
+                        <td>Hollandia Damesfiets wit/beige</td>
+                        <td>&euro; 100</td>
+                        <td>5 weeks ago</td>
+                    </tr>
+                    <tr>
+                        <td>Pinarello Asolo racefiets Columbus frame Shimano Fir Rolls</td>
+                        <td>&euro; 1940</td>
+                        <td>3 months ago</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="box effect">
+        <h2>John Legend</h2>
+        <p class="score-label">John Legend's suspicious score</p>
+        <div id="score-user2" class="score-percentage">50%</div>
+        <canvas id="score-canvas-user2"></canvas>
+        <h3>What triggered this alert?</h3>
+        <table class="rules">
+            <tbody>
+                <tr>
+                    <td>Multiple advertisements on one day</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>User profile recently created</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>Non-trackable payment</td>
+                    <td>5%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p id="show-more-user2"><a class="show-more" onclick="javascript:showAdvertisement('user2')">...</a></p>
+        <div id="advertisement-user2" class="hidden">
+            <h3>Advertisements by John Legend</h3>
+            <table class="advertisements">
+                <tbody>
+                    <tr>
+                        <td>elektrische fiets KASIHIMA voor heren</td>
+                        <td>&euro; 350</td>
+                        <td>3 weeks ago</td>
+                    </tr>
+                    <tr>
+                        <td>Hollandia Damesfiets wit/beige</td>
+                        <td>&euro; 100</td>
+                        <td>5 weeks ago</td>
+                    </tr>
+                    <tr>
+                        <td>Pinarello Asolo racefiets Columbus frame Shimano Fir Rolls</td>
+                        <td>&euro; 1940</td>
+                        <td>3 months ago</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    // User score data
+    users = [
+    {"id": "user1", "score": 0.35}, 
+    {"id": "user2", "score": 0.6}
+    ]
+
+    // Initialize Range Slider
+    $('input[type="range"]').rangeslider({
+        polyfill : false,
+        onInit : function() {
+            this.output = $( '<div class="range-output" />' ).insertAfter( this.$range ).html( this.$element.val() + "%" );
+        },
+        onSlide : function( position, value ) {
+            this.output.html( value + "%");
+        }
+    });
+
+    // Compute color based on score
+    function getColor(score){
+        score = Math.sqrt(score) // apply sqrt to make color move towards red more quickly
+        var hue=((1-score)*120).toString(10);
+        return ["hsl(",hue,",100%,50%)"].join("");
+    }
+
+    function showAdvertisement(id) {
+        // Hide all advertisements by default, show show-more link
+        for (i=0; i<users.length; i++) {
+            document.getElementById("advertisement-" + users[i]["id"]).style.display = 'none';
+            document.getElementById("show-more-" + users[i]["id"]).style.display = 'block';    
+        }
+        // Show selected advertisement, hide show-more link
+        document.getElementById("advertisement-" + id).style.display = 'block';
+        document.getElementById("show-more-" + id).style.display = 'none';
+    }
+
+    // Draw canvas with scores
+    for (i=0; i<users.length; i++) {
+        user = users[i]["id"]
+        score = users[i]["score"]
+
+        // Set score label
+        document.getElementById("score-" + user).innerHTML=(score * 100)+"%";
+
+        // Set score tachometer
+        var canvas = document.getElementById('score-canvas-' + user);
+        
+        canvas.width = 150
+        canvas.height = 50
+        var ctx = canvas.getContext('2d');
+        ctx.lineWidth = 20;
+
+        // Draw colored arc
+        ctx.beginPath();
+        ctx.arc(75, 60, 50, 1.1 * Math.PI, (1 + score*0.9) * Math.PI, false);
+        ctx.strokeStyle = getColor(score);
+        ctx.stroke();
+
+        // Draw gray arc
+        ctx.beginPath();
+        ctx.arc(75, 60, 50, (1 + score*0.9) * Math.PI, 1.9 * Math.PI, false);
+        ctx.strokeStyle = "#cccccc";
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>
