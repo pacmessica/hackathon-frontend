@@ -23,7 +23,7 @@ export class Filters extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.fitler}>
                 <table className={styles.filters}>
                     <tbody>
                         <tr>
