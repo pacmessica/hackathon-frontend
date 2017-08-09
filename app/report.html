@@ -139,7 +139,7 @@
         $(suspectNode).appendTo('#suspects');
 
         // Set score label
-        document.getElementById("score-" + user).innerHTML=(score * 100)+"%";
+        document.getElementById("score-" + user).innerHTML=(Math.round(score * 100))+"%";
 
         // Set score tachometer
         var canvas = document.getElementById('score-canvas-' + user);
