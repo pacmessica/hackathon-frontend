@@ -1,7 +1,7 @@
 html,
 body {
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Nunito, 'Open Sans', sans-serif;
   font-weight: 200;
   height: 100%;
   margin: 0;
@@ -12,7 +12,7 @@ h1, h2 {
 }
 
 .container {
-    background: #f6f8f9;
+    background: #ccc;
     color: #394146;
     min-height: 100vh;
     height: 100%;
@@ -23,7 +23,7 @@ h1, h2 {
         text-decoration: none;
         line-height:20px;
         font-size: 20px;
-        color: #bbc3c5;
+        color: #394146;
         margin: 0 auto;
     }
 }

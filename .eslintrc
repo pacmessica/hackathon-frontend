@@ -119,7 +119,7 @@
       { "SwitchCase": 1 }
     ],                              // http://eslint.org/docs/rules/indent
     "brace-style": [
-      2,                          
+      0,
       "1tbs", {
         "allowSingleLine": true
       }
@@ -127,7 +127,7 @@
     "quotes": [
       2, "single", "avoid-escape"    // http://eslint.org/docs/rules/quotes
     ],
-    "camelcase": [2, {               // http://eslint.org/docs/rules/camelcase
+    "camelcase": [0, {               // http://eslint.org/docs/rules/camelcase
       "properties": "never"
     }],
     "comma-spacing": [2, {           // http://eslint.org/docs/rules/comma-spacing
@@ -180,7 +180,7 @@
     "react/no-did-update-set-state": 2,
     "react/no-multi-comp": 2,
     "react/no-unknown-property": 2,
-    "react/prop-types": 2,
+    "react/prop-types": 0,
     "react/react-in-jsx-scope": 2,
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,

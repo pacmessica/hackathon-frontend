@@ -7,3 +7,205 @@
 .content {
     display: flex;
 }
+
+body {
+  background:#ccc;
+  font-size: 16px;
+  font-family: Nunito, 'Open Sans', sans-serif;
+  margin: 80px;
+}
+h1 {
+  text-align:center;
+  font-size: 35px;
+}
+p {
+  line-height: 20px;
+}
+.header {
+  width:50%;
+  margin:auto;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.header p {
+  color: #555;
+}
+.box h2{
+  padding-top: 30px;
+  font-size: 20px;
+
+  margin: auto;
+}
+.box h3{
+
+
+}
+.box {
+  width:50%;
+  background:#FFF;
+  margin: 10px auto;
+  text-align:center;
+
+}
+.box table {
+  margin: auto;
+  text-align: left;
+}
+.box table tbody {
+  color: #777;
+}
+table.filters {
+  table-layout : fixed;
+  width: 100%;
+  text-align: center;
+}
+input {
+  width: 80%;
+  border: 1px solid #ccc;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: Nunito, 'Open Sans', sans-serif;
+  border-radius: 5px;
+}
+table.advertisement {
+  padding: 20px;
+}
+table.advertisement td {
+  font-size: 16px;
+  text-align: center;
+}
+table.advertisement td img {
+  max-height:100px;
+  width: 100px;
+  overflow: hidden;
+}
+table.advertisement td.score {
+  font-size: 30px;
+  color: #777;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #F8F8F8;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 15%;
+}
+table.advertisement td.title {
+  padding-left: 30px;
+  text-align: left;
+}
+.advertisement-details {
+  color: #777;
+  margin: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: left;
+  font-size: 12px;
+}
+.advertisement-details table
+{
+  table-layout : fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+div.breaker {
+
+}
+.box table td {
+  padding: 3px;
+}
+.box table.rules td:nth-child(2),
+.box table.rules th:nth-child(2)  {
+  text-align: center;
+  padding-left: 25px;
+}
+.box table.advertisements th:first-child,
+.box table.advertisements td:first-child  {
+  width: 250px;
+  text-transform: capitalize;
+}
+.box table.advertisements td:nth-child(2),
+.box table.advertisements th:nth-child(2)  {
+  text-align: right;
+}
+.box table.advertisements td {
+  font-size: 13px;
+  padding-right: 15px;
+
+}
+.score-slider {
+  width: 300px;
+  margin: auto;
+}
+.score-slider .range-output {
+  margin-top: 20px;
+  color: #666;
+  font-size: 21px;
+  font-weight: 600;
+}
+.score-percentage{
+  position: relative;
+
+  margin: auto;
+
+  color: #aaa;
+}
+.score-label {
+  font-size: 14px;
+  color: #bbb;
+}
+.showMore {
+  font-size: 25px;
+  cursor: pointer;
+}
+.hidden {
+   display:none;
+}
+.effect
+{
+  position:relative;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect:before, .effect:after
+{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  -webkit-box-shadow:0 0 20px rgba(0,0,0,0.4);
+  -moz-box-shadow:0 0 20px rgba(0,0,0,0.4);
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+  top:0;
+  bottom:0;
+  left:10px;
+  right:10px;
+  -moz-border-radius:100px / 10px;
+  border-radius:100px / 10px;
+}
+.effect:after
+{
+  right:10px;
+  left:auto;
+  -webkit-transform:skew(8deg) rotate(3deg);
+  -moz-transform:skew(8deg) rotate(3deg);
+  -ms-transform:skew(8deg) rotate(3deg);
+  -o-transform:skew(8deg) rotate(3deg);
+  transform:skew(8deg) rotate(3deg);
+}
+
+.boxEffectShowmore {
+    composes: effect;
+    composes: box;
+    composes: showMore;
+    font-size: 16px;
+}
+
+.description {
+    margin: 25px;
+    text-align: left;
+    line-height: 1.5em;
+    font-size: 0.9em;
+}
