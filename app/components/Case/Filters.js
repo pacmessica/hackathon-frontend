@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { Item as FormItem } from 'app/components/Form/Item';
-import styles from './Filters.scss';
+import styles from './Case.scss';
 
 export class Filters extends React.Component {
     constructor() {
@@ -23,7 +23,7 @@ export class Filters extends React.Component {
 
     render() {
         return (
-            <div className={styles.fitler}>
+            <div className={styles.filter}>
                 <table className={styles.filters}>
                     <tbody>
                         <tr>
