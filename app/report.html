@@ -61,13 +61,50 @@
 
     function createSuspectNode(user) {
         const {id, name} = users[i].user;
-        const {advertisements} = users[i];
+        const {advertisements, matches} = users[i];
         var ads = ""
         advertisements.forEach(function({title, price, created}) {
             ads += `<tr>
                 <td>${title}</td>
                 <td>&euro; ${price}</td>
                 <td>${created}</td>
+            </tr>`
+        })
+
+        var rules = ""
+        matches.forEach(function({name, score}) {
+            var rule = ''
+            if (name === 'uses_nontrackable_payment') {
+                rule = "Non-trackable payment"
+            }
+            else if (name === 'multiple_advertisements_single_day') {
+                rule = "Multiple advertisements in one day"
+            }
+            else if (name === 'user_recently_created') {
+                rule = "New user"
+            }
+            else if (name === 'is_different_user_same_phone') {
+                rule = "Different user has same phone"
+            }
+            else if (name === 'is_address_abroad') {
+                rule = "International address"
+            }
+            else if (name === 'is_high_activity') {
+                rule = "High user activity"
+            }
+            else if (name === 'very_high_price') {
+                rule = "Listing has high price"
+            }
+            else if (name === 'is_company') {
+                rule = "Company"
+            }
+            else if (name === 'is_malafide') {
+                rule = "User is malafide"
+            }
+
+            rules += `<tr>
+                <td>${rule}</td>
+                <td>${score*100}%</td>
             </tr>`
         })
 
@@ -79,18 +116,7 @@
             <h3>What triggered this alert?</h3>
             <table class="rules">
                 <tbody>
-                    <tr>
-                        <td>Multiple advertisements on one day</td>
-                        <td>25%</td>
-                    </tr>
-                    <tr>
-                        <td>User profile recently created</td>
-                        <td>20%</td>
-                    </tr>
-                    <tr>
-                        <td>Non-trackable payment</td>
-                        <td>5%</td>
-                    </tr>
+                    ${rules}
                 </tbody>
             </table>
             <p id="show-more-${id}"><a class="show-more" onclick="javascript:showAdvertisement('${id}')">...</a></p>
