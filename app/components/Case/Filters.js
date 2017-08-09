@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Item as FormItem } from 'app/components/Form/Item';
 import styles from './Filters.scss';
 
@@ -7,23 +8,17 @@ export class Filters extends React.Component {
         super();
         this.state = {
             description: '',
-            location: '',
+            city: '',
         };
     }
 
-    // onChange = (filter) => {
-    //     const {filters} = this.state;
-    //     if (!filters.includes(filter)) {
-    //         this.setState({
-    //             filters: filters.concat([filter])
-    //         });
-    //     }
-    // }
-
     onUpdateField = (value, field) => {
-        console.log({value, field});
-        this.setState({[field]: value});
-        console.log('this.state', this.state);
+        this.setState({[field.toLowerCase()]: value});
+    }
+
+    onSearch = () => {
+        const { description, city } = this.state;
+        this.props.filterCase({description, city}, this.props.caseQuery);
     }
 
     render() {
@@ -32,15 +27,15 @@ export class Filters extends React.Component {
               <h2>Filters</h2>
 
               <FormItem label="Description" value={this.state.description} onUpdate={this.onUpdateField}/>
-              <FormItem label="Location" value={this.state.location} onUpdate={this.onUpdateField}/>
-
+              <FormItem label="City" value={this.state.city} onUpdate={this.onUpdateField}/>
+              <button onClick={this.onSearch}>Apply Filters</button>
             </div>
         );
     }
 }
 
 Filters.propTypes = {
-    // tags: PropTypes.arrayOf(PropTypes.string),
-    // onChange: PropTypes.func,
+    filterCase: PropTypes.func,
+    caseQuery: PropTypes.string,
 };
 

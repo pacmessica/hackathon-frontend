@@ -4,7 +4,7 @@ import styles from './Case.scss';
 import { Post } from './Post';
 import { Filters } from './Filters';
 
-export const Case = ({ posts }) => {
+export const Case = ({ caseQuery, posts, filterCase }) => {
     return (
         <div className={styles.container}>
             <h1>Search Results</h1>
@@ -12,12 +12,14 @@ export const Case = ({ posts }) => {
                 <ul>
                     {posts.map((post) => <Post key={post.id} {...post} /> )}
                 </ul>
-                <Filters />
+                <Filters filterCase={filterCase} caseQuery={caseQuery} />
             </div>
         </div>
     );
 };
 
 Case.propTypes = {
+    caseQuery: PropTypes.string,
     posts: PropTypes.array,
+    filterCase: PropTypes.func,
 };

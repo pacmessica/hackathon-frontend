@@ -9,6 +9,15 @@ export const cases = (state = {}, action) => {
                 }
             };
 
+        case 'ADD_POSTS':
+            return {
+                ...state,
+                [action.id]: {
+                    ...state[action.id],
+                    posts: action.payload.posts,
+                }
+            };
+
         default:
             return state;
     }
