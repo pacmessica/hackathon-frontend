@@ -28,6 +28,8 @@
     console.log(xhr.statusText);
     users = JSON.parse(xhr.response);
 
+    // users = [{user: {id: 'john', name: 'john'}, suspiscious_score: 0.6, advertisements: [{title: "this is an ad"}]}]
+
     // Initialize Range Slider
     $('input[type="range"]').rangeslider({
         polyfill : false,
@@ -59,6 +61,15 @@
 
     function createSuspectNode(user) {
         const {id, name} = users[i].user;
+        const {advertisements} = users[i];
+        var ads = ""
+        advertisements.forEach(function({title, price, created}) {
+            ads += `<tr>
+                <td>${title}</td>
+                <td>&euro; ${price}</td>
+                <td>${created}</td>
+            </tr>`
+        })
 
         return `<div class="box effect">
             <h2>${name}</h2>
@@ -87,21 +98,7 @@
                 <h3>Advertisements by ${name}</h3>
                 <table class="advertisements">
                     <tbody>
-                        <tr>
-                            <td>elektrische fiets KASIHIMA voor heren</td>
-                            <td>&euro; 350</td>
-                            <td>3 weeks ago</td>
-                        </tr>
-                        <tr>
-                            <td>Hollandia Damesfiets wit/beige</td>
-                            <td>&euro; 100</td>
-                            <td>5 weeks ago</td>
-                        </tr>
-                        <tr>
-                            <td>Pinarello Asolo racefiets Columbus frame Shimano Fir Rolls</td>
-                            <td>&euro; 1940</td>
-                            <td>3 months ago</td>
-                        </tr>
+                        ${ads}
                     </tbody>
                 </table>
             </div>
