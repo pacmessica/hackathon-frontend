@@ -67,7 +67,7 @@ export class Post extends React.Component {
                 <table className={styles.advertisement}>
                     <tbody>
                         <tr>
-                            <td className={styles.score}><span>{suspiscious_score * 100}%</span></td>
+                            <td className={styles.score}><span>{Math.round(suspiscious_score * 100)}%</span></td>
                             <td className={styles.title}>{title}</td>
                             <td><a href={url}><img src={src} width="100" /></a></td>
                         </tr>

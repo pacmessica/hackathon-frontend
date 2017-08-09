@@ -37,26 +37,6 @@ export class Filters extends React.Component {
                 <button onClick={this.onSearch}>Apply Filters</button>
             </div>
         );
-
-        // return (
-        //     <div className={styles.container}>
-        //       <h2>Filters</h2>
-        //
-        //       <FormItem label="Description" value={this.state.description} onUpdate={this.onUpdateField}/>
-        //       <FormItem label="City" value={this.state.city} onUpdate={this.onUpdateField}/>
-        //       <button onClick={this.onSearch}>Apply Filters</button>
-        //
-        //       <table className={styles.filters}>
-        //           <tbody>
-        //               <tr>
-        //                   <td className={styles.score}><input type="text" placeholder="Description" value={this.state.description} onUpdate={this.onUpdateField} /></td>
-        //                   <td className={styles.score}><input type="text" placeholder="Location" /></td>
-        //               </tr>
-        //           </tbody>
-        //       </table>
-        //       <button onClick={this.onSearch}>Apply Filters</button>
-        //     </div>
-        // );
     }
 }
 

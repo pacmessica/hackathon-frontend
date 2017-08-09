@@ -63,9 +63,9 @@
         const {id, name} = users[i].user;
         const {advertisements, matches} = users[i];
         var ads = ""
-        advertisements.forEach(function({title, price, created}) {
+        advertisements.forEach(function({title, price, created, url}) {
             ads += `<tr>
-                <td>${title}</td>
+                <td><a href=${url}>${title}</a></td>
                 <td>&euro; ${price}</td>
                 <td>${created}</td>
             </tr>`

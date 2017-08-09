@@ -11,6 +11,14 @@ h1 {
 p {
   line-height: 20px;
 }
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+a:hover  {
+    color: #777;
+}
 .header {
   width:50%;
   margin:auto;
