@@ -17,107 +17,16 @@
             <input type="range">
         </div>
     </div>
-    <div class="box effect">
-        <h2>John Legend</h2>
-        <p class="score-label">John Legend's suspicious score</p>
-        <div id="score-user1" class="score-percentage">50%</div>
-        <canvas id="score-canvas-user1"></canvas>
-        <h3>What triggered this alert?</h3>
-        <table class="rules">
-            <tbody>
-                <tr>
-                    <td>Multiple advertisements on one day</td>
-                    <td>25%</td>
-                </tr>
-                <tr>
-                    <td>User profile recently created</td>
-                    <td>20%</td>
-                </tr>
-                <tr>
-                    <td>Non-trackable payment</td>
-                    <td>5%</td>
-                </tr>
-            </tbody>
-        </table>
-        <p id="show-more-user1"><a class="show-more" onclick="javascript:showAdvertisement('user1')">...</a></p>
-        <div id="advertisement-user1" class="hidden">
-            <h3>Advertisements by John Legend</h3>
-            <table class="advertisements">
-                <tbody>
-                    <tr>
-                        <td>elektrische fiets KASIHIMA voor heren</td>
-                        <td>&euro; 350</td>
-                        <td>3 weeks ago</td>
-                    </tr>
-                    <tr>
-                        <td>Hollandia Damesfiets wit/beige</td>
-                        <td>&euro; 100</td>
-                        <td>5 weeks ago</td>
-                    </tr>
-                    <tr>
-                        <td>Pinarello Asolo racefiets Columbus frame Shimano Fir Rolls</td>
-                        <td>&euro; 1940</td>
-                        <td>3 months ago</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="box effect">
-        <h2>John Legend</h2>
-        <p class="score-label">John Legend's suspicious score</p>
-        <div id="score-user2" class="score-percentage">50%</div>
-        <canvas id="score-canvas-user2"></canvas>
-        <h3>What triggered this alert?</h3>
-        <table class="rules">
-            <tbody>
-                <tr>
-                    <td>Multiple advertisements on one day</td>
-                    <td>25%</td>
-                </tr>
-                <tr>
-                    <td>User profile recently created</td>
-                    <td>20%</td>
-                </tr>
-                <tr>
-                    <td>Non-trackable payment</td>
-                    <td>5%</td>
-                </tr>
-            </tbody>
-        </table>
-        <p id="show-more-user2"><a class="show-more" onclick="javascript:showAdvertisement('user2')">...</a></p>
-        <div id="advertisement-user2" class="hidden">
-            <h3>Advertisements by John Legend</h3>
-            <table class="advertisements">
-                <tbody>
-                    <tr>
-                        <td>elektrische fiets KASIHIMA voor heren</td>
-                        <td>&euro; 350</td>
-                        <td>3 weeks ago</td>
-                    </tr>
-                    <tr>
-                        <td>Hollandia Damesfiets wit/beige</td>
-                        <td>&euro; 100</td>
-                        <td>5 weeks ago</td>
-                    </tr>
-                    <tr>
-                        <td>Pinarello Asolo racefiets Columbus frame Shimano Fir Rolls</td>
-                        <td>&euro; 1940</td>
-                        <td>3 months ago</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <div id="suspects">
 </div>
 <script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://185.3.209.107/api/report", false);
+    xhr.send();
 
-    // User score data
-    users = [
-    {"id": "user1", "score": 0.35}, 
-    {"id": "user2", "score": 0.6}
-    ]
+    console.log(xhr.status);
+    console.log(xhr.statusText);
+    users = JSON.parse(xhr.response);
 
     // Initialize Range Slider
     $('input[type="range"]').rangeslider({
@@ -140,25 +49,78 @@
     function showAdvertisement(id) {
         // Hide all advertisements by default, show show-more link
         for (i=0; i<users.length; i++) {
-            document.getElementById("advertisement-" + users[i]["id"]).style.display = 'none';
-            document.getElementById("show-more-" + users[i]["id"]).style.display = 'block';    
+            document.getElementById("advertisement-" + users[i].user["id"]).style.display = 'none';
+            document.getElementById("show-more-" + users[i].user["id"]).style.display = 'block';
         }
         // Show selected advertisement, hide show-more link
         document.getElementById("advertisement-" + id).style.display = 'block';
         document.getElementById("show-more-" + id).style.display = 'none';
     }
 
+    function createSuspectNode(user) {
+        const {id, name} = users[i].user;
+
+        return `<div class="box effect">
+            <h2>${name}</h2>
+            <p class="score-label">${name}'s suspicious score</p>
+            <div id="score-${id}" class="score-percentage">50%</div>
+            <canvas id="score-canvas-${id}"></canvas>
+            <h3>What triggered this alert?</h3>
+            <table class="rules">
+                <tbody>
+                    <tr>
+                        <td>Multiple advertisements on one day</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td>User profile recently created</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>Non-trackable payment</td>
+                        <td>5%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="show-more-${id}"><a class="show-more" onclick="javascript:showAdvertisement('${id}')">...</a></p>
+            <div id="advertisement-${id}" class="hidden">
+                <h3>Advertisements by ${name}</h3>
+                <table class="advertisements">
+                    <tbody>
+                        <tr>
+                            <td>elektrische fiets KASIHIMA voor heren</td>
+                            <td>&euro; 350</td>
+                            <td>3 weeks ago</td>
+                        </tr>
+                        <tr>
+                            <td>Hollandia Damesfiets wit/beige</td>
+                            <td>&euro; 100</td>
+                            <td>5 weeks ago</td>
+                        </tr>
+                        <tr>
+                            <td>Pinarello Asolo racefiets Columbus frame Shimano Fir Rolls</td>
+                            <td>&euro; 1940</td>
+                            <td>3 months ago</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>`
+    }
+
     // Draw canvas with scores
     for (i=0; i<users.length; i++) {
-        user = users[i]["id"]
-        score = users[i]["score"]
+        user = users[i].user.id;
+        score = users[i].suspiscious_score;
+        suspectNode = createSuspectNode(user[i])
+        $(suspectNode).appendTo('#suspects');
 
         // Set score label
         document.getElementById("score-" + user).innerHTML=(score * 100)+"%";
 
         // Set score tachometer
         var canvas = document.getElementById('score-canvas-' + user);
-        
+
         canvas.width = 150
         canvas.height = 50
         var ctx = canvas.getContext('2d');
